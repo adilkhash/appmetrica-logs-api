@@ -5,7 +5,6 @@ from typing import List, Dict, Union
 
 from requests import Response
 
-from appmetrica_api.constants import Installs, Events, Sessions, Clicks
 from appmetrica_api.utils import get_min_dt, get_max_dt
 from appmetrica_api.http_utils import make_request
 
@@ -31,8 +30,8 @@ class AppMetricaLogs:
         self,
         date_since: Union[str, dt.date],
         date_until: Union[str, dt.date],
-        fields: List[Installs.Field],
-        filters: Dict[Installs.Field, str],
+        fields: List[str],
+        filters: Dict[str, str],
     ):
         if isinstance(date_since, dt.date):
             date_since = get_min_dt(date_since)
@@ -51,8 +50,8 @@ class AppMetricaLogs:
         entity: str,
         date_since: Union[str, dt.date],
         date_until: Union[str, dt.date],
-        fields: List[Installs.Field],
-        filters: Dict[Installs.Field, str],
+        fields: List[str],
+        filters: Dict[str, str],
         output_format: str = 'csv',
     ):
         entities = {
